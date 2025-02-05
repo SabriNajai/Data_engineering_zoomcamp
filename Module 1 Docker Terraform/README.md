@@ -39,11 +39,11 @@ You can use the code from the course. It's up to you whether you want to use Jup
 ### Question 3 Trip Segmentation Count
 During the period of October 1st 2019 (inclusive) and November 1st 2019 (exclusive), how many trips, respectively, happened:
 
-Up to 1 mile
-In between 1 (exclusive) and 3 miles (inclusive),
-In between 3 (exclusive) and 7 miles (inclusive),
-In between 7 (exclusive) and 10 miles (inclusive),
-Over 10 miles
+1. Up to 1 mile
+2. In between 1 (exclusive) and 3 miles (inclusive),
+3. In between 3 (exclusive) and 7 miles (inclusive),
+4. In between 7 (exclusive) and 10 miles (inclusive),
+5. Over 10 miles
 
 SELECT
     COUNT(*) FILTER (WHERE trip_distance <= 1) AS trips_up_to_1_mile,
