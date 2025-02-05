@@ -17,11 +17,11 @@ docker run -it python:3.12.8 bash
 
 pip --version
 
-Answer: 24.3.1
+**Answer: 24.3.1**
 
 ### Question 2 Understanding Docker networking and docker-compose
 
-Answer: db:5432
+**Answer: db:5432**
 
 The `hostname` is the name of the database service in the `docker-compose.yaml` file, which is `db`. The `port` is the port that the database service is exposed on, which is `5432`.
 
@@ -45,6 +45,7 @@ During the period of October 1st 2019 (inclusive) and November 1st 2019 (exclusi
 4. In between 7 (exclusive) and 10 miles (inclusive),
 5. Over 10 miles
 
+```sql
 SELECT
     COUNT(*) FILTER (WHERE trip_distance <= 1) AS trips_up_to_1_mile,
     COUNT(*) FILTER (WHERE trip_distance > 1 AND trip_distance <= 3) AS trips_between_1_and_3_miles,
@@ -53,26 +54,30 @@ SELECT
     COUNT(*) FILTER (WHERE trip_distance > 10) AS trips_over_10_miles
 FROM green_taxi_data
 WHERE lpep_pickup_datetime >= '2019-10-01' AND lpep_pickup_datetime < '2019-11-01';
+```
 
-Answer: 104,849; 199,040; 109,670; 27,693; 35,202
+**Answer: 104,849; 199,040; 109,670; 27,693; 35,202**
 
 ### Question 4 Longest trip for each day
 Which was the pick up day with the longest trip distance? Use the pick up time for your calculations.
 Tip: For every day, we only care about one single trip with the longest distance.
 
+```sql
 SELECT  lpep_pickup_datetime::DATE AS date, 
         MAX(trip_distance) AS max_trip_distance
 FROM green_taxi_trips
 GROUP BY lpep_pickup_datetime::DATE
 ORDER BY max_trip_distance DESC
 LIMIT 1;
+```
 
-Answer: 2019-10-31
+**Answer: 2019-10-31**
 
 ### Question 5 Three biggest pickup zones
 Which were the top pickup locations with over 13,000 in total_amount (across all trips) for 2019-10-18?
 Consider only lpep_pickup_datetime when filtering by date.
 
+```sql
 SELECT z."Zone", SUM(total_amount) AS total_amount_sum
 FROM green_taxi_trips gtt
 JOIN zones z ON gtt."PULocationID" = z."LocationID"
@@ -80,8 +85,9 @@ WHERE gtt.lpep_pickup_datetime::DATE = '2019-10-18'
 GROUP BY z."Zone"
 HAVING SUM(total_amount) > 13000.0
 ORDER BY total_amount DESC;
+```
 
-Answer: East Harlem North, East Harlem South, Morningside Heights
+**Answer: East Harlem North, East Harlem South, Morningside Heights**
 
 ### Question 6 Largest tip
 For the passengers picked up in October 2019 in the zone named "East Harlem North" which was the drop off zone that had the largest tip?
@@ -89,6 +95,7 @@ Note: it's tip , not trip
 We need the name of the zone, not the ID.
 
 
+```sql
 SELECT zdo."Zone" AS dropoff_zone, MAX(gtt.tip_amount) AS max_tip_amount
 FROM green_taxi_trips gtt
 JOIN zones zpu ON gtt."PULocationID" = zpu."LocationID"
@@ -97,6 +104,7 @@ WHERE zpu."Zone" = 'East Harlem North'
 GROUP BY zdo."Zone"
 ORDER BY max_tip_amount DESC
 LIMIT 1;
+```
 
 Answer: JFK Airport
 
@@ -112,4 +120,4 @@ Downloading the provider plugins and setting up backend,
 Generating proposed changes and auto-executing the plan
 Remove all resources managed by terraform`
 
-Answer: terraform init, terraform apply -auto-aprove, terraform destroy
+**Answer: terraform init, terraform apply -auto-aprove, terraform destroy**
