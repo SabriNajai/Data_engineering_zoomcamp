@@ -19,7 +19,7 @@ What is the rendered value of the variable `file` when the inputs `taxi` is set 
 
 1. `{{inputs.taxi}}_tripdata_{{inputs.year}}-{{inputs.month}}.csv` 
 2. `green_tripdata_2020-04.csv`
-3.`green_tripdata_04_2020.csv`
+3. `green_tripdata_04_2020.csv`
 4. `green_tripdata_2020.csv`
 
 **Answer: `green_tripdata_2020-04.csv`**
