@@ -43,4 +43,4 @@ producer.flush()
 t1 = time()
 took = t1 - t0
 
-print(f"Sent {len(data)} messages. Time taken: {took:.2f} seconds")
+print(f"Time taken: {took:.2f} seconds")
