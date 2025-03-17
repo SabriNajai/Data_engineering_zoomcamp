@@ -174,7 +174,7 @@ took = t1 - t0
 
 How much time did it take to send the entire dataset and flush? 
 
-**Answer : Time taken: 101.46 seconds`**
+**Answer : `Time taken: 101.46 seconds`**
 
 ### Question 5: Build a Sessionization Window (2 points)
 
